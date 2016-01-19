@@ -384,7 +384,6 @@ if ($object->id > 0)
 		$sql.= " WHERE p.fk_soc =".$object->id;
 		$sql.= " AND p.entity =".$conf->entity;
 		$sql.= " ORDER BY p.date_commande DESC";
-		$sql.= " ".$db->plimit($MAXLIST);
 		$resql=$db->query($sql);
 		if ($resql)
 		{
@@ -405,7 +404,7 @@ if ($object->id > 0)
 			}
 
 			$var = True;
-			while ($i < $num && $i <= $MAXLIST)
+			while ($i < $num && $i < $MAXLIST)
 			{
 				$obj = $db->fetch_object($resql);
 				$var=!$var;
